@@ -23,10 +23,8 @@ interface UsernameListPagination {
   count?: number;
 }
 
-function listQueryParams(count: number, nextID?: string) {
-  const nextIDParam = nextID ? `&nextID=${nextID}` : '';
-  return `fields=bio,photoSmall,firstName,lastName,followerCount,followingCount&limit=${count}${nextIDParam}`;
-}
+const userListFieldsParam =
+  'fields=bio,photoSmall,firstName,lastName,followerCount,followingCount';
 
 export function searchUsername(
   username: string,
@@ -34,7 +32,9 @@ export function searchUsername(
 ) {
   return axiosWithEndpoint<ControllerSchema['GetSearchUsername']>(
     'get',
-    `/api/users/s/username/${username}?${listQueryParams(count, nextID)}`
+    `/api/users/s/username/${username}?${userListFieldsParam}`,
+    {},
+    { params: { nextID, limit: count } }
   );
 }
 
@@ -44,7 +44,9 @@ export function searchAny(
 ) {
   return axiosWithEndpoint<ControllerSchema['GetSearchAny']>(
     'get',
-    `/api/users/s/any/${searchText}?${listQueryParams(count, nextID)}`
+    `/api/users/s/any/${searchText}?${userListFieldsParam}`,
+    {},
+    { params: { nextID, limit: count } }
   );
 }
 
@@ -54,7 +56,9 @@ export function getFollowers(
 ) {
   return axiosWithEndpoint<ControllerSchema['GetFollowers']>(
     'get',
-    `/api/users/${userID}/followers?${listQueryParams(count, nextID)}`
+    `/api/users/${userID}/followers?${userListFieldsParam}`,
+    {},
+    { params: { nextID, limit: count } }
   );
 }
 
@@ -64,7 +68,9 @@ export function getFollowing(
 ) {
   return axiosWithEndpoint<ControllerSchema['GetFollowers']>(
     'get',
-    `/api/users/${userID}/follows?${listQueryParams(count, nextID)}`
+    `/api/users/${userID}/follows?${userListFieldsParam}`,
+    {},
+    { params: { nextID, limit: count } }
   );
 }
 
