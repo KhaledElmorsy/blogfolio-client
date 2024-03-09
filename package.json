@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@blogfolio/types": "^0.0.26",
+    "@blogfolio/types": "^0.0.27",
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
