@@ -1,0 +1,49 @@
+@use 'src/scss/_variables.scss';
+
+.button {
+  text-decoration: none;
+
+  color: white;
+  background-color: variables.$color-main-dark;
+
+  font-family: variables.$font-serif;
+  font-size: 20px;
+
+  width: fit-content;
+  height: 55px;
+  padding: 10px 15px;
+
+  transition: 200ms ease-out;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+
+  appearance: none;
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  }
+
+  &:active {
+    scale: 0.95;
+  }
+
+  &.danger {
+    background-color: variables.$color-danger;
+  }
+
+  &:disabled {
+    background-color: grey;
+    color: lightgrey;
+    cursor: default;
+
+    &:active {
+      scale: 1;
+    }
+
+    &:hover {
+      box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+    }
+  }
+}
