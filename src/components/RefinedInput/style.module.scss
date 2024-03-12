@@ -1,0 +1,47 @@
+@use 'src/scss/_variables.scss';
+@use 'src/scss/_animations.scss';
+
+.input {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  outline: solid 0.5px grey;
+  border: none;
+  padding-left: 10px;
+  font-family: variables.$font-sans-serif;
+  font-weight: 300;
+
+  transition: 200ms ease-out;
+
+  &::placeholder {
+    color: #aeaeae
+  }
+
+  &.error {
+    outline: solid 1px variables.$color-danger;
+  }
+}
+
+.inputContainer {
+  height: 40px;
+  width: 100%;
+  position: relative;
+}
+
+.errorList {
+  position: absolute;
+  top: 105%;
+  font-family: variables.$font-sans-serif;
+  font-weight: 300;
+
+  color: variables.$color-danger;
+  background-color: whitesmoke;
+
+  animation: 500ms popup;
+
+  border-radius: 5px;
+  padding: 10px 30px;
+  width: fit-content;
+
+  z-index: 2;
+}
