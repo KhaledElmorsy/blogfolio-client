@@ -1,0 +1,52 @@
+@use '/src/scss/variables.scss';
+
+.signupContainer {
+  height: 80%;
+  width: 70%;
+  padding: 40px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+
+  display: grid;
+  gap: 30px;
+  grid-template-areas:
+    "title      title"
+    "username   email"
+    "password   bio"
+    "firstName  lastName";
+
+  overflow: auto;
+}
+
+.title {
+  font-size: 36px;
+  font-family: variables.$font-serif;
+  color: variables.$color-main-dark;
+  grid-area: title;
+
+}
+
+.username {
+  grid-area: username;
+}
+
+.email {
+  grid-area: email;
+}
+
+.password {
+  grid-area: password;
+}
+
+.bio {
+  grid-area: bio;
+}
+
+.firstName {
+  grid-area: firstName;
+}
+
+.lastName {
+  grid-area: lastName;
+}

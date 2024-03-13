@@ -20,7 +20,10 @@ export function Layout() {
           </span>
           <span className={style.userActions}>
             {!user ? (
-              <Link to="/login">Login</Link>
+              <>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </>
             ) : (
               <>
                 <img src={user.photoSmall ?? ''} className={style.userPic} />
