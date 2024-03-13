@@ -1,0 +1,66 @@
+@use 'src/scss/_variables.scss';
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  height: 100vh;
+}
+
+.topBar {
+  display: flex;
+  align-items: start;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.navBar {
+  background-color: variables.$color-main;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 50px;
+  height: 50px;
+  border-radius: 0 0 0 35px;
+  padding: 0px 20px;
+  font-size: 22px;
+
+  .links {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+  }
+
+  .userPic {
+    aspect-ratio: 1;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-family: variables.$font-sans-serif;
+    font-weight: 200;
+
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      color: whitesmoke;
+    }
+  }
+
+}
+
+.logo {
+  font-size: 70px;
+  font-family: variables.$font-logo;
+  color: variables.$color-main-dark;
+  margin: 5px 50px;
+  text-decoration: none;
+}
