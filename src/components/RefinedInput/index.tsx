@@ -2,7 +2,7 @@ import { useRef, type ChangeEventHandler } from 'react';
 import style from './style.module.scss';
 import { useHover } from 'usehooks-ts';
 
-interface RefinedInputProps {
+export interface RefinedInputProps {
   errors: Array<string>;
   value: string;
   disabled?: boolean;
@@ -10,6 +10,8 @@ interface RefinedInputProps {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   password?: boolean;
+  label?: string;
+  labelClass?: string;
 }
 
 export function RefinedInput({
@@ -20,6 +22,8 @@ export function RefinedInput({
   placeholder,
   errors,
   password,
+  label,
+  labelClass,
 }: RefinedInputProps) {
   const errorClass = errors.length ? style.error : '';
   const inputRef = useRef<HTMLInputElement>(null);
@@ -27,6 +31,9 @@ export function RefinedInput({
   return (
     <>
       <div className={style.inputContainer}>
+        {label ? (
+          <div className={labelClass ?? style.label}>{label}</div>
+        ) : null}
         <input
           ref={inputRef}
           disabled={disabled ?? false}

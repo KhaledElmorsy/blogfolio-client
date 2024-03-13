@@ -23,9 +23,19 @@
 }
 
 .inputContainer {
-  height: 40px;
+  height: fit-content;
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+
+.label {
+  color: variables.$color-main-dark;
+  font-family: variables.$font-serif;
+  font-size: 20px;
 }
 
 .errorList {
