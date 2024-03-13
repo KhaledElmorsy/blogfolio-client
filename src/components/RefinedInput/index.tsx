@@ -9,6 +9,7 @@ interface RefinedInputProps {
   required?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
+  password?: boolean;
 }
 
 export function RefinedInput({
@@ -18,6 +19,7 @@ export function RefinedInput({
   required,
   placeholder,
   errors,
+  password,
 }: RefinedInputProps) {
   const errorClass = errors.length ? style.error : '';
   const inputRef = useRef<HTMLInputElement>(null);
@@ -33,6 +35,7 @@ export function RefinedInput({
           value={value}
           className={`${style.input} ${errorClass}`}
           placeholder={placeholder}
+          type={password ? 'password' : 'text'}
         />{' '}
         {!inputHovered || !errors.length ? null : (
           <ul className={style.errorList}>

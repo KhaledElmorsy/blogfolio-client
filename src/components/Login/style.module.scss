@@ -1,0 +1,37 @@
+@use '/src/scss/_variables.scss';
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  width: 500px;
+  height: 400px;
+  padding: 40px;
+
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.3);
+
+  .title{
+    font-size: 40px;
+    font-family: variables.$font-serif;
+    color: variables.$color-main-dark;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    width: 80%;
+
+    .label {
+      color: variables.$color-main-dark;
+      font-family: variables.$font-serif;
+      font-size: 20px;
+    }
+  }
+}

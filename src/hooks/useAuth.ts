@@ -9,33 +9,36 @@ import { useState } from 'react';
 
 export function useAuth() {
   const { setUser } = useUserContext();
-  const [loginError, setLoginError] = useState<string>('');
+  const [loginError, setLoginError] = useState<string | null>();
 
   async function login(username: string, password: string) {
     const loginResponse = await loginApi(username, password);
+    let loginErr;
     switch (loginResponse.status) {
       case SuccessCode.Ok: {
-        setLoginError('');
+        setLoginError(null);
         const loggedUserResponse = await getLoggedUser();
         if (loggedUserResponse.status === SuccessCode.Ok) {
-          setUser(loggedUserResponse.body.user);
+          return setUser(loggedUserResponse.body.user);
         } else {
-          setLoginError('Something went wrong');
+          loginErr = 'Something went wrong';
         }
         break;
       }
       case ErrorCode.Forbidden:
-        setLoginError('Your credentials are incorrect');
+        loginErr = 'Your credentials are incorrect';
         break;
       case ErrorCode.NotFound:
-        setLoginError("A user with that username doesn't exist");
+        loginErr = "A user with that username doesn't exist";
         break;
       case ErrorCode.BadRequest:
-        setLoginError('Ensure your credentials are valid');
+        loginErr = 'Ensure your credentials are valid';
         break;
       default:
-        setLoginError('Something went wrong');
+        loginErr = 'Something went wrong';
     }
+    setLoginError(loginErr);
+    throw loginErr;
   }
 
   async function logout() {
