@@ -1,0 +1,59 @@
+@use '/src/scss/variables';
+
+.itemContainer {
+  font-family: variables.$font-sans-serif;
+
+  background-color: white;
+  display: flex;
+  width: 600px;
+  padding: 20px;
+  gap: 20px;
+  outline: solid 0.1px lightgray;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+
+  .userData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-shrink: 0;
+    gap: 10px;
+    width: 100px
+  }
+
+  .postData {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    align-items: start;
+    justify-content: space-evenly;
+
+    .miscContainer {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+}
+
+.title {
+  font-size: 22px;
+}
+
+.summary {}
+
+.username {
+  font-size: 0.8em;
+}
+
+.userPFP {
+  border-radius: 50%;
+  width: 50px;
+}
+
+.date {
+  font-size: 0.95em;
+}
+
+.emotes {}
