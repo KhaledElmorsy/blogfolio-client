@@ -1,3 +1,5 @@
+@use './variables.scss';
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,4 +9,10 @@
 body {
   background-image: url('/public/floralbg.jpg');
   background-size: cover;
+}
+
+a {
+  color: variables.$color-main-dark;
+  text-decoration: none;
+  font-weight: 700;
 }
