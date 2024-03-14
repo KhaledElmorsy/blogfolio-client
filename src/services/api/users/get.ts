@@ -12,7 +12,7 @@ export function getLoggedUser() {
 export function getUserData(userID: string) {
   return axiosWithEndpoint<ControllerSchema['Get']>(
     'get',
-    `/api/users/${userID}?fields=bio,fullName,lastName,photoFull,photoSmall,followerCount,followingCount`
+    `/api/users/${userID}?fields=bio,firstName,lastName,photoFull,photoSmall,followerCount,followingCount`
   );
 }
 
