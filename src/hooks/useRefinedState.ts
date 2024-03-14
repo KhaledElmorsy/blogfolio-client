@@ -1,11 +1,11 @@
 import { z } from 'zod';
 import { useState, useEffect } from 'react';
 
-export function useRefinedState<T extends z.ZodTypeAny, S = z.infer<T>>(
+export function useRefinedState<T extends z.ZodTypeAny>(
   schema: T,
-  initialState: S | (() => S)
+  initialState: z.infer<T> | (() => z.infer<T>)
 ) {
-  const [state, setState] = useState<S>(initialState);
+  const [state, setState] = useState<z.infer<T>>(initialState);
   const [errors, setErrors] = useState<string[]>([]);
 
   useEffect(() => {

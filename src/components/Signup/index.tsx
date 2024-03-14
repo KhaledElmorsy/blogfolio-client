@@ -27,15 +27,12 @@ export function Signup() {
   const [username, setUsername, usernameErr] = useRefinedState(zUsername, '');
   const [email, setEmail, emailErr] = useRefinedState(zEmail, '');
   const [password, setPassword, passwordErr] = useRefinedState(zPassword, '');
-  const [bio, setBio, bioErr] = useRefinedState(zBio, null as string | null);
+  const [bio, setBio, bioErr] = useRefinedState(zBio, null);
   const [firstName, setFirstName, firstNameErr] = useRefinedState(
     zFirstName,
-    null as string | null
+    null
   );
-  const [lastName, setLastName, lastNameErr] = useRefinedState(
-    zLastName,
-    null as string | null
-  );
+  const [lastName, setLastName, lastNameErr] = useRefinedState(zLastName, null);
 
   const [usernameTaken, setUsernameTaken] = useState(false);
   const [emailTaken, setEmailTaken] = useState(false);
