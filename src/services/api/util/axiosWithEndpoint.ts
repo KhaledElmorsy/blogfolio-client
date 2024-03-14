@@ -15,7 +15,10 @@ export default async function axiosWithEndpoint<T extends EndpointSchema>(
 ) {
   type Response = InferEndpoint<T>['response'];
 
-  const response = await axios[method]<Response['body']>(url, body, config);
+  const response = await (['put', 'post'].includes(method)
+    ? axios[method]<Response['body']>(url, body, config)
+    : axios[method]<Response['body']>(url, config));
+
   const { status, data } = response;
 
   return { status, body: data, axios: response } as Response & {
