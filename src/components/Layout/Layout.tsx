@@ -15,7 +15,7 @@ export function Layout() {
           <span className={style.links}>
             <Link to="/">Home</Link>
             <Link to="/portfolio">Portfolio</Link>
-            <Link to="/blogs">Blogs</Link>
+            <Link to="/posts">Posts</Link>
             <Link to="/account">Account</Link>
           </span>
           <span className={style.userActions}>
