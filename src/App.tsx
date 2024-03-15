@@ -7,6 +7,7 @@ import {
   LoggedUserPosts,
   UserPosts,
   UserLayout,
+  ProtectedRoute,
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
@@ -29,7 +30,9 @@ function App() {
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<UserPosts />} />
               </Route>
-              <Route path="posts" element={<LoggedUserPosts />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="posts" element={<LoggedUserPosts />} />
+              </Route>
             </Route>
           </Routes>
         </EmoteProvider>
