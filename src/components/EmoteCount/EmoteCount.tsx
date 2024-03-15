@@ -1,6 +1,6 @@
 import { useEmoteContext } from '@/contexts/EmoteContext';
-import type { EmoteCount } from '../PostList';
-import style from './style.module.scss';
+import type { EmoteCount } from '../PostList/PostList';
+import style from './EmoteCount.module.scss';
 
 interface EmoteCountProps {
   emoteCounts: EmoteCount[];

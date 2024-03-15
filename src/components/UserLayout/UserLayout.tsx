@@ -2,8 +2,8 @@ import { checkUsername } from '@/services/api/users';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Outlet, NavLink } from 'react-router-dom';
-import { Spinner } from '../Spinner';
-import style from './style.module.scss';
+import { Spinner } from '../Spinner/Spinner';
+import style from './UserLayout.module.scss';
 
 export function UserLayout() {
   const { username } = useParams();

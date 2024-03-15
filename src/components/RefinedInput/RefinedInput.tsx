@@ -1,5 +1,5 @@
 import { useRef, type ChangeEventHandler } from 'react';
-import style from './style.module.scss';
+import style from './RefinedInput.module.scss';
 import { useHover } from 'usehooks-ts';
 
 export interface RefinedInputProps {

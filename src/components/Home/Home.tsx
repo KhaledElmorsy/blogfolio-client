@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '..';
 import { useUserContext } from '@/contexts/UserContext';
-import style from './style.module.scss';
+import style from './Home.module.scss';
 
 export function Home() {
   const { user } = useUserContext();

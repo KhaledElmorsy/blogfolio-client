@@ -7,7 +7,7 @@ import {
 } from '@blogfolio/types/User';
 import { useUserContext } from '@/contexts/UserContext';
 import { ToastContainer, toast, Slide } from 'react-toastify';
-import style from './style.module.scss';
+import style from './Login.module.scss';
 
 export function Login() {
   const { user } = useUserContext();

@@ -1,5 +1,5 @@
 import { BounceLoader } from 'react-spinners';
-import style from './style.module.scss';
+import style from './Spinner.module.scss';
 
 interface SpinnerProps {
   /** When number, unit is assumed as px. When string, a unit is expected to be passed in */

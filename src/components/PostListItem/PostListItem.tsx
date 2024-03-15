@@ -1,11 +1,14 @@
-import type { EmoteCount as EmoteCountType, LightPost } from '../PostList';
+import type {
+  EmoteCount as EmoteCountType,
+  LightPost,
+} from '../PostList/PostList';
 import { useEffect, useState } from 'react';
 import { getUserData } from '@/services/api/users';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { Resources } from '@blogfolio/types/User';
-import style from './style.module.scss';
-import { Spinner } from '../Spinner';
-import { EmoteCount } from '../EmoteCount';
+import style from './PostListItem.module.scss';
+import { Spinner } from '../Spinner/Spinner';
+import { EmoteCount } from '../EmoteCount/EmoteCount';
 
 type User = Resources['QueriedUser'];
 

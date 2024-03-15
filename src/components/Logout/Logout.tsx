@@ -1,6 +1,6 @@
 import { useAuth } from '@/hooks';
 import { useNavigate } from 'react-router-dom';
-import style from './style.module.scss';
+import style from './Logout.module.scss';
 
 export function Logout() {
   const { logout } = useAuth();

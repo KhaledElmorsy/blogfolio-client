@@ -18,7 +18,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { useRefinedState, useAuth } from '@/hooks';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { ToastContainer, toast, Slide } from 'react-toastify';
-import style from './style.module.scss';
+import style from './Signup.module.scss';
 
 export function Signup() {
   const { user } = useUserContext();

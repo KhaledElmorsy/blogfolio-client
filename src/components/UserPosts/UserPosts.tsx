@@ -1,10 +1,10 @@
 import { getPostByUsername } from '@/services/api/posts';
 import { useParams, useNavigate } from 'react-router-dom';
-import { PostList, type LightPost } from '../PostList';
-import { SearchBar } from '../SearchBar';
+import { PostList, type LightPost } from '../PostList/PostList';
+import { SearchBar } from '../SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { SuccessCode } from '@blogfolio/types/Response';
-import style from './style.module.scss';
+import style from './UserPosts.module.scss';
 
 export function UserPosts() {
   const { username } = useParams();

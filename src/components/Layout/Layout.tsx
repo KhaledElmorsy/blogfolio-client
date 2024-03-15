@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-import style from './style.module.scss';
+import style from './Layout.module.scss';
 import { useUserContext } from '@/contexts/UserContext';
 
 export function Layout() {

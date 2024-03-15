@@ -1,9 +1,9 @@
 import { getUserPosts } from '@/services/api/posts';
-import { PostList, type LightPost } from '../PostList';
+import { PostList, type LightPost } from '../PostList/PostList';
 import { useState, useEffect } from 'react';
 import { SuccessCode } from '@blogfolio/types/Response';
-import { SearchBar } from '../SearchBar';
-import style from './style.module.scss';
+import { SearchBar } from '../SearchBar/SearchBar';
+import style from './LoggedUser.module.scss';
 
 export function LoggedUserPosts() {
   const [posts, setPosts] = useState<LightPost[]>([]);
@@ -40,7 +40,9 @@ export function LoggedUserPosts() {
         {posts.length ? (
           <PostList posts={posts} />
         ) : (
-          <div className={style.emptyListWarning}>&quot;It looks like nothing&apos;s here&quot;</div>
+          <div className={style.emptyListWarning}>
+            &quot;It looks like nothing&apos;s here&quot;
+          </div>
         )}
       </div>
     </div>

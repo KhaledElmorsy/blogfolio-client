@@ -3,7 +3,7 @@ import { Post as PostTypes } from '@blogfolio/types';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { useState, useEffect } from 'react';
 import { z } from 'zod';
-import { PostListItem } from '../PostListItem';
+import { PostListItem } from '../PostListItem/PostListItem';
 
 export type Post = z.infer<(typeof PostTypes)['postSchema']>;
 
