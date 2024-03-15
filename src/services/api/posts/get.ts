@@ -36,7 +36,14 @@ export function searchPosts(searchText: string, options: PostListOptions = {}) {
   );
 }
 
-export function getPostByUsername(username: string, options: PostListOptions) {
+interface SearchablePostOptions extends PostListOptions {
+  search?: string;
+}
+
+export function getPostByUsername(
+  username: string,
+  options: SearchablePostOptions
+) {
   return axiosWithEndpoint<ControllerSchema['GetByUsername']>(
     'get',
     `/api/user/${username}/posts`,
@@ -45,9 +52,8 @@ export function getPostByUsername(username: string, options: PostListOptions) {
   );
 }
 
-interface UserPostListOptions extends PostListOptions {
+interface UserPostListOptions extends SearchablePostOptions {
   drafts?: boolean;
-  search?: string;
 }
 
 export function getUserPosts(options: UserPostListOptions) {
