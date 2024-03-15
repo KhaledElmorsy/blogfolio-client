@@ -8,6 +8,7 @@ import {
   UserPosts,
   UserLayout,
   ProtectedRoute,
+  NewPost,
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
@@ -30,8 +31,9 @@ function App() {
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<UserPosts />} />
               </Route>
-              <Route element={<ProtectedRoute to="/login"/>}>
+              <Route element={<ProtectedRoute to="/login" />}>
                 <Route path="posts" element={<LoggedUserPosts />} />
+                <Route path="posts/new" element={<NewPost />} />
               </Route>
             </Route>
           </Routes>

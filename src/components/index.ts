@@ -12,3 +12,4 @@ export { UserPosts } from './UserPosts/UserPosts';
 export { UserLayout } from './UserLayout/UserLayout';
 export { Spinner } from './Spinner/Spinner';
 export { ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
+export { NewPost } from './NewPost/NewPost';
