@@ -1,5 +1,14 @@
-import { Layout, Login, Logout, Signup, Home } from './components/';
-import { Routes, Route } from 'react-router-dom';
+import {
+  Layout,
+  Login,
+  Logout,
+  Signup,
+  Home,
+  LoggedUserPosts,
+  UserPosts,
+  UserLayout,
+} from './components/';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
@@ -16,6 +25,11 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="logout" element={<Logout />} />
               <Route path="signup" element={<Signup />} />
+              <Route path="users/:username" element={<UserLayout />}>
+                <Route index element={<Navigate to="posts" />} />
+                <Route path="posts" element={<UserPosts />} />
+              </Route>
+              <Route path="posts" element={<LoggedUserPosts />} />
             </Route>
           </Routes>
         </EmoteProvider>

@@ -1,0 +1,65 @@
+@use '/src/scss/variables';
+@use '/src/scss/mixins';
+
+.page {
+  display: flex;
+  gap: 40px;
+
+  .miniBlock {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 25%;
+    position: relative;
+
+    .username {
+      color: variables.$color-main-dark;
+      font-family: variables.$font-sans-serif;
+      font-size: 18px;
+      padding: 20px;
+      height: fit-content;
+      overflow-x: auto;
+      background-color: white;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 5px;
+
+
+      a {
+        background-color: variables.$color-main;
+        color: white;
+        width: fit-content;
+        height: 40px;
+        font-family: variables.$font-serif;
+        padding: 5px 10px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+        border-radius: 5px 5px 0 0;
+
+
+        &.active {
+          background-color: variables.$color-main-dark;
+        }
+      }
+    }
+  }
+}
+
+.doesntExistMessage {
+  color: variables.$color-main-dark;
+  font-family: variables.$font-sans-serif;
+  font-size: 20px;
+  @include mixins.shadowBox;
+  height: 100px;
+  width: 600px;
+  padding: 30px;
+  display: grid;
+  place-content: center;
+
+  .emphasis {
+    font-weight: 700;
+    color: variables.$color-main
+  }
+}

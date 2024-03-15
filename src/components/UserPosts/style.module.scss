@@ -1,0 +1,27 @@
+@use '/src/scss/variables';
+
+.outerContainer {
+  display: flex;
+  gap: 20px;
+
+  .mainBlock {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    background-color: white;
+    height: 80%;
+    overflow: hidden;
+    width: 700px;
+
+    .listContainer {
+      overflow: auto;
+      height: 90%;
+
+      width: 100%;
+
+      .nothingMessage {
+        font-family: variables.$font-sans-serif;
+        font-size: 24px;
+        padding: 20px
+      }
+    }
+  }
+}
