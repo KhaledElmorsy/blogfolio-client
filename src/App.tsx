@@ -30,7 +30,7 @@ function App() {
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<UserPosts />} />
               </Route>
-              <Route element={<ProtectedRoute />}>
+              <Route element={<ProtectedRoute to="/login"/>}>
                 <Route path="posts" element={<LoggedUserPosts />} />
               </Route>
             </Route>
