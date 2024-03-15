@@ -7,3 +7,4 @@ export { Signup } from './Signup';
 export { Home } from './Home';
 export { SearchBar } from './SearchBar';
 export { EmoteCount } from './EmoteCount';
+export { LoggedUserPosts } from './LoggedUserPosts';

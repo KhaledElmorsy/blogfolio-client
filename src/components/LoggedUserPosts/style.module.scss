@@ -1,0 +1,26 @@
+@use '/src/scss/variables';
+
+.pageContainer {
+  width: fit-content;
+  height: 80%;
+
+  .draftToggleContainer {
+    font-family: variables.$font-sans-serif;
+    font-size: 20px;
+  }
+
+  .listContainer {
+    overflow: auto;
+    height: fit-content;
+    width: fit-content;
+    max-height: 80%;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .emptyListWarning {
+    font-size: 28px;
+    font-family: variables.$font-sans-serif;
+    padding: 50px;
+  }
+}
