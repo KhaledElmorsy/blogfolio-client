@@ -16,6 +16,7 @@ import {
   updatePostEmote,
 } from '@/services/api/emotes';
 import { useUserContext } from '@/contexts/UserContext';
+import { PostProvider } from '@/contexts/PostContext';
 import { SuccessCode } from '@blogfolio/types/Response';
 
 import style from './ShowPost.module.scss';
@@ -71,27 +72,26 @@ export function ShowPost() {
     }
   }, [post, user, userEmote]);
 
-  return loading ? (
+  return loading || !post ? (
     <Spinner />
   ) : (
-    <div className={style.pageContainer}>
-      <div className={style.titleContainer}>
-        <h2 className={style.title}>{post?.title}</h2>
-        {post?.summary ? <p>{post.summary}</p> : null}
-        {user ? (
-          <EmotePicker
-            emoteCounts={emoteCounts}
-            onPick={pickEmote}
-            pickedEmote={userEmote}
-          />
-        ) : (
-          <EmoteCount emoteCounts={emoteCounts} />
-        )}
+    <PostProvider postID={post?.id}>
+      <div className={style.pageContainer}>
+        <div className={style.titleContainer}>
+          <h2 className={style.title}>{post?.title}</h2>
+          {post?.summary ? <p>{post.summary}</p> : null}
+          {user ? (
+            <EmotePicker
+              emoteCounts={emoteCounts}
+              onPick={pickEmote}
+              pickedEmote={userEmote}
+            />
+          ) : (
+            <EmoteCount emoteCounts={emoteCounts} />
+          )}
+        </div>
+        <MDEditor.Markdown source={post?.body} className={style.postBody} />
       </div>
-      <MDEditor.Markdown
-        source={post?.body}
-        className={style.postBody}
-      />
-    </div>
+    </PostProvider>
   );
 }
