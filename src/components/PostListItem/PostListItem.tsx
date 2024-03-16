@@ -9,6 +9,7 @@ import { Resources } from '@blogfolio/types/User';
 import style from './PostListItem.module.scss';
 import { Spinner } from '../Spinner/Spinner';
 import { EmoteCount } from '../EmoteCount/EmoteCount';
+import { Link } from 'react-router-dom';
 
 type User = Resources['QueriedUser'];
 
@@ -22,6 +23,7 @@ export function PostListItem({
   userID,
   emotes,
   createdAt,
+  slug,
 }: PostListItemProps) {
   const [user, setUser] = useState<User>();
   useEffect(() => {
@@ -39,6 +41,8 @@ export function PostListItem({
   const createdAtDate = new Date(createdAt);
   const renderedDate = `${createdAtDate.getMonth()}/${createdAtDate.getFullYear()}`;
 
+  const linkURL = `/users/${user?.username}/posts/${slug}`;
+
   return !user ? (
     <Spinner />
   ) : (
@@ -48,7 +52,9 @@ export function PostListItem({
         <p className={style.username}>{user.username}</p>
       </div>
       <div className={style.postData}>
-        <h4 className={style.title}>{title}</h4>
+        <Link to={linkURL}>
+          <h4 className={style.title}>{title}</h4>
+        </Link>
         <p className={style.summary}>{summary ?? ''}</p>
         <div className={style.miscContainer}>
           <p className={style.date}>{renderedDate}</p>

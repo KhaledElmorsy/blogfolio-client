@@ -1,0 +1,24 @@
+@use '/src/scss/mixins';
+@use '/src/scss/variables';
+
+.pageContainer {
+  width: 600px;
+  font-family: variables.$font-sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.titleContainer {
+  background-color: white;
+  outline: solid 0.5px slategray;
+  border-radius: 5px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .title {
+    color: variables.$color-main-dark
+  }
+}

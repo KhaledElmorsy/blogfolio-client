@@ -9,6 +9,7 @@ import {
   UserLayout,
   ProtectedRoute,
   NewPost,
+  ShowPost
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
@@ -30,6 +31,7 @@ function App() {
               <Route path="users/:username" element={<UserLayout />}>
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<UserPosts />} />
+                <Route path="posts/:slug" element={<ShowPost />} />
               </Route>
               <Route element={<ProtectedRoute to="/login" />}>
                 <Route path="posts" element={<LoggedUserPosts />} />
