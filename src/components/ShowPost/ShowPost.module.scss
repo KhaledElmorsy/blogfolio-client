@@ -13,11 +13,11 @@
   outline: solid 0.5px slategray;
   border-radius: 5px;
   padding: 30px;
+  background-color: white;
 }
 
 
 .titleContainer {
-  background-color: white;
   @include card;
   display: flex;
   flex-direction: column;
@@ -31,4 +31,8 @@
 .postBody {
   @include card;
   margin-bottom: 20px;
+}
+
+.comments {
+  @include card;
 }

@@ -17,6 +17,7 @@ import {
 } from '@/services/api/emotes';
 import { useUserContext } from '@/contexts/UserContext';
 import { PostProvider } from '@/contexts/PostContext';
+import { CommentForm } from '../CommentForm/CommentForm';
 import { SuccessCode } from '@blogfolio/types/Response';
 
 import style from './ShowPost.module.scss';
@@ -91,6 +92,10 @@ export function ShowPost() {
           )}
         </div>
         <MDEditor.Markdown source={post?.body} className={style.postBody} />
+        <div className={style.comments}>
+          Comments
+          <CommentForm />
+        </div>
       </div>
     </PostProvider>
   );
