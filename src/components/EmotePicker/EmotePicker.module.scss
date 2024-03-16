@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 5px;
+
+  .small {
+    font-size: 12px;
+  }
+
+  .large {
+    font-size: 18px;
+  }
+
+  .emote {
+    padding: 5px 5px;
+    cursor: pointer;
+  }
+
+  .picked {
+    background-color: rgba(0, 128, 0, 0.205);
+    border-radius: 5px;
+  }
+}

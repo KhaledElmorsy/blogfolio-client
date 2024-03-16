@@ -2,17 +2,42 @@ import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from 'rehype-sanitize';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Post } from '../PostList/PostList';
+import {
+  type EmoteCount as EmoteCountType,
+  type Post,
+} from '../PostList/PostList';
+import { EmoteCount } from '..';
+import { EmotePicker } from '../EmotePicker/EmotePicker';
 import { Spinner } from '..';
 import { getPostBySlug } from '@/services/api/posts';
+import {
+  addPostEmote,
+  getPostEmoteCounts,
+  getPostUserEmotes,
+  updatePostEmote,
+} from '@/services/api/emotes';
+import { useUserContext } from '@/contexts/UserContext';
 import { SuccessCode } from '@blogfolio/types/Response';
 
 import style from './ShowPost.module.scss';
 
 export function ShowPost() {
+  const { user } = useUserContext();
   const { slug, username } = useParams();
   const [post, setPost] = useState<Post>();
+  const [emoteCounts, setEmoteCounts] = useState<EmoteCountType[]>([]);
+  const [userEmote, setUserEmote] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+
+  function pickEmote(emoteID: number) {
+    if (!post) return;
+    if (!userEmote) {
+      addPostEmote(post?.id, emoteID).catch(console.error);
+    } else {
+      updatePostEmote(post?.id, emoteID).catch(console.error);
+    }
+    setTimeout(() => setUserEmote(emoteID), 40);
+  }
 
   useEffect(() => {
     getPostBySlug(slug!, username!)
@@ -27,6 +52,26 @@ export function ShowPost() {
       .catch(console.error);
   }, [slug, username]);
 
+  useEffect(() => {
+    if (!post) return;
+    getPostEmoteCounts([post.id])
+      .then((res) => {
+        if (res.status === SuccessCode.Ok) {
+          setEmoteCounts(res.body[post.id] ?? []);
+        }
+      })
+      .catch(console.error);
+    if (user) {
+      getPostUserEmotes([post.id], user.id)
+        .then((res) => {
+          if (res.status === SuccessCode.Ok) {
+            setUserEmote(res.body[0]?.emoteID ?? null);
+          }
+        })
+        .catch(console.error);
+    }
+  }, [post, user, userEmote]);
+
   return loading ? (
     <Spinner />
   ) : (
@@ -34,6 +79,15 @@ export function ShowPost() {
       <div className={style.titleContainer}>
         <h2 className={style.title}>{post?.title}</h2>
         {post?.summary ? <p>{post.summary}</p> : null}
+        {user ? (
+          <EmotePicker
+            emoteCounts={emoteCounts}
+            onPick={pickEmote}
+            pickedEmote={userEmote}
+          />
+        ) : (
+          <EmoteCount emoteCounts={emoteCounts} />
+        )}
       </div>
       <MDEditor
         hideToolbar={true}
