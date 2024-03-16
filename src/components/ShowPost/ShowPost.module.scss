@@ -9,11 +9,16 @@
   gap: 20px;
 }
 
-.titleContainer {
-  background-color: white;
+@mixin card {
   outline: solid 0.5px slategray;
   border-radius: 5px;
   padding: 30px;
+}
+
+
+.titleContainer {
+  background-color: white;
+  @include card;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -21,4 +26,9 @@
   .title {
     color: variables.$color-main-dark
   }
+}
+
+.postBody {
+  @include card;
+  margin-bottom: 20px;
 }

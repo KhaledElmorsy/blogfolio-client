@@ -1,5 +1,4 @@
 import MDEditor from '@uiw/react-md-editor';
-import rehypeSanitize from 'rehype-sanitize';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
@@ -89,13 +88,9 @@ export function ShowPost() {
           <EmoteCount emoteCounts={emoteCounts} />
         )}
       </div>
-      <MDEditor
-        hideToolbar={true}
-        value={post?.body}
-        preview="preview"
-        previewOptions={{
-          rehypePlugins: [[rehypeSanitize]],
-        }}
+      <MDEditor.Markdown
+        source={post?.body}
+        className={style.postBody}
       />
     </div>
   );
