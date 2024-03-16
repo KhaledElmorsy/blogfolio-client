@@ -28,14 +28,14 @@ export function ShowPost() {
   const [userEmote, setUserEmote] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
-  function pickEmote(emoteID: number) {
+  async function pickEmote(emoteID: number) {
     if (!post) return;
     if (!userEmote) {
-      addPostEmote(post?.id, emoteID).catch(console.error);
+      await addPostEmote(post?.id, emoteID);
     } else {
-      updatePostEmote(post?.id, emoteID).catch(console.error);
+      await updatePostEmote(post?.id, emoteID);
     }
-    setTimeout(() => setUserEmote(emoteID), 40);
+    setUserEmote(emoteID);
   }
 
   useEffect(() => {

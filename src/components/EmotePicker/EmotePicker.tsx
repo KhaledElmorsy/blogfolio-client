@@ -4,7 +4,7 @@ import { EmoteCount } from '../PostList/PostList';
 
 interface EmotePickerProps {
   pickedEmote: number | null;
-  onPick: (emoteID: number) => void;
+  onPick: (emoteID: number) => void | Promise<void>;
   size?: 'large' | 'small';
   emoteCounts: EmoteCount[];
 }
@@ -19,7 +19,7 @@ export function EmotePicker({
 
   function pickEmote(emoteID: number) {
     return function () {
-      onPick(emoteID);
+      void onPick(emoteID);
     };
   }
 
