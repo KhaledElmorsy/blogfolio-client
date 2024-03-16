@@ -1,0 +1,23 @@
+@use '/src/scss/variables';
+
+.button {
+  font-size: 16px;
+  height: 30px;
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.input {
+  height: 80px;
+  font-size: 0.9 rem;
+  font-family: variables.$font-sans-serif;
+  padding: 10px;
+  resize: none;
+}
