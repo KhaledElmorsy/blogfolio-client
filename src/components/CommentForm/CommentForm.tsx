@@ -2,7 +2,7 @@ import style from './CommentForm.module.scss';
 import { useUserContext } from '@/contexts/UserContext';
 import { usePostContext } from '@/contexts/PostContext';
 import { createComment, editComment } from '@/services/api/comments';
-import { useState } from 'react';
+import { SetStateAction, useState, Dispatch } from 'react';
 import { Button } from '../Button/Button';
 import { Link } from 'react-router-dom';
 
@@ -10,12 +10,14 @@ interface CommentFormProps {
   parentID?: string;
   initialBody?: string;
   commentID?: string;
+  refresh?: Dispatch<SetStateAction<boolean>>;
 }
 
 export function CommentForm({
   parentID,
   commentID,
   initialBody,
+  refresh
 }: CommentFormProps) {
   const [body, setBody] = useState(initialBody ?? '');
   const { user } = useUserContext();
@@ -28,6 +30,7 @@ export function CommentForm({
       createComment({ body, postID, parentID })
         .then(() => {
           setBody('');
+          if(refresh) refresh((p) => !p);
         })
         .catch(console.error);
     }
