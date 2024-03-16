@@ -15,6 +15,7 @@ import { type Resources } from '@blogfolio/types/User';
 import { SuccessCode } from '@blogfolio/types/Response';
 import style from './Comment.module.scss';
 import { EmotePicker } from '../EmotePicker/EmotePicker';
+import { Link } from 'react-router-dom';
 
 type Comment = z.infer<(typeof CommentTypes)['comment']>;
 type User = Resources['QueriedUser'];
@@ -82,7 +83,10 @@ export function Comment({
 
   return (
     <div className={style.container}>
-      <p className={style.author}>{author?.username ?? 'Deleted'}</p>
+      <p className={style.author}>
+        {<Link to={`/users/${author?.username}`}>{author?.username}</Link> ??
+          'Deleted'}
+      </p>
       <p className={style.body}>{body}</p>
       <div className={style.footer}>
         {user ? (
