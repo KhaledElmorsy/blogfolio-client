@@ -39,7 +39,7 @@ export function PostListItem({
   }, []);
 
   const createdAtDate = new Date(createdAt);
-  const renderedDate = `${createdAtDate.getMonth()}/${createdAtDate.getFullYear()}`;
+  const renderedDate = `${createdAtDate.getMonth()+1}/${createdAtDate.getFullYear()}`;
 
   const linkURL = `/users/${user?.username}/posts/${slug}`;
 
