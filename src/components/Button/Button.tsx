@@ -7,10 +7,20 @@ interface ButtonProps {
   disabled?: boolean;
   danger?: boolean;
   href?: string;
+  className?: string;
 }
 
-export function Button({ onClick, text, disabled, danger, href }: ButtonProps) {
-  const buttonClass = `${style.button} ${danger ? style.danger : ''}`;
+export function Button({
+  onClick,
+  text,
+  disabled,
+  danger,
+  href,
+  className = '',
+}: ButtonProps) {
+  const buttonClass = `${style.button} ${
+    danger ? style.danger : ''
+  } ${className}`;
   return href ? (
     <a href={href} className={buttonClass}>
       {text}
