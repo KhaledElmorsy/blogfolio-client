@@ -89,7 +89,7 @@ export function ShowPost() {
         ) : null}
         <div className={style.titleContainer}>
           <h2 className={style.title}>{post?.title}</h2>
-          {post?.summary ? <p>{post.summary}</p> : null}
+          {post?.summary ? <p className={style.summary}>{post.summary}</p> : null}
           {user ? (
             <EmotePicker
               emoteCounts={emoteCounts}
@@ -102,7 +102,7 @@ export function ShowPost() {
         </div>
         <MDEditor.Markdown source={post?.body} className={style.postBody} />
         <div className={style.comments}>
-          Comments
+          <p className={style.title}>Comments</p>
           <CommentForm refresh={setRefreshComments} />
           <div className={style.commentListContainer}>
             <CommentList refresh={refreshComments} />
