@@ -25,7 +25,7 @@ export function Login() {
   function performLogin() {
     login(username, password)
       .then(() => {
-       navigate('/');
+        navigate('/');
       })
       .catch((err) => {
         toast.error(err as string, {
@@ -45,31 +45,33 @@ export function Login() {
   return user ? (
     <Navigate to="/" />
   ) : (
-    <div className={style.loginContainer}>
-      <span className={style.title}>Login</span>
-      <div className={style.inputContainer}>
-        <div className={style.label}>Username</div>
-        <RefinedInput
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          errors={usernameErrs}
+    <>
+      <div className={style.loginContainer}>
+        <span className={style.title}>Login</span>
+        <div className={style.inputContainer}>
+          <div className={style.label}>Username</div>
+          <RefinedInput
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            errors={usernameErrs}
+          />
+        </div>
+        <div className={style.inputContainer}>
+          <div className={style.label}>Password</div>
+          <RefinedInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            errors={passwordErrs}
+            password
+          />
+        </div>
+        <Button
+          disabled={!!passwordErrs.length || !!usernameErrs.length}
+          text="Login"
+          onClick={performLogin}
         />
       </div>
-      <div className={style.inputContainer}>
-        <div className={style.label}>Password</div>
-        <RefinedInput
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          errors={passwordErrs}
-          password
-        />
-      </div>
-      <Button
-        disabled={!!passwordErrs.length || !!usernameErrs.length}
-        text="Login"
-        onClick={performLogin}
-      />
       <ToastContainer limit={1} />
-    </div>
+    </>
   );
 }
