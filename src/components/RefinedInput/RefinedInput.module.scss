@@ -2,14 +2,16 @@
 @use 'src/scss/_animations.scss';
 
 .input {
-  height: 30px;
+  height: 35px;
   width: 100%;
-  border-radius: 5px;
-  outline: solid 0.5px grey;
+  border-radius: 2px;
   border: none;
+  padding-top: 5px;
   padding-left: 10px;
   font-family: variables.$font-sans-serif;
   font-weight: 300;
+  font-size: 1.05rem;
+  border-bottom: solid 1.2px lightgray;
 
   transition: 200ms ease-out;
 
@@ -17,8 +19,13 @@
     color: #aeaeae
   }
 
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
   &.error {
-    outline: solid 1px variables.$color-danger;
+    border-bottom: solid 1px variables.$color-danger;
   }
 }
 
