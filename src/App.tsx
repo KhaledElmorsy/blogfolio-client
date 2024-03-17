@@ -9,7 +9,8 @@ import {
   UserLayout,
   ProtectedRoute,
   NewPost,
-  ShowPost
+  ShowPost,
+  EditPost
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
@@ -32,6 +33,7 @@ function App() {
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<UserPosts />} />
                 <Route path="posts/:slug" element={<ShowPost />} />
+                <Route path="posts/:slug/edit" element={<EditPost />} />
               </Route>
               <Route element={<ProtectedRoute to="/login" />}>
                 <Route path="posts" element={<LoggedUserPosts />} />

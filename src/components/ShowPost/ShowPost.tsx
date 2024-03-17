@@ -1,5 +1,5 @@
 import MDEditor from '@uiw/react-md-editor';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   type EmoteCount as EmoteCountType,
@@ -80,6 +80,13 @@ export function ShowPost() {
   ) : (
     <PostProvider postID={post?.id}>
       <div className={style.pageContainer}>
+        {user?.id === post.userID ? (
+          <div className={style.editButtonContainer}>
+            <Link to="edit" className={style.editButton}>
+              Edit
+            </Link>
+          </div>
+        ) : null}
         <div className={style.titleContainer}>
           <h2 className={style.title}>{post?.title}</h2>
           {post?.summary ? <p>{post.summary}</p> : null}
@@ -96,10 +103,10 @@ export function ShowPost() {
         <MDEditor.Markdown source={post?.body} className={style.postBody} />
         <div className={style.comments}>
           Comments
-          <CommentForm refresh={setRefreshComments}/>
+          <CommentForm refresh={setRefreshComments} />
           <div className={style.commentListContainer}>
-            <CommentList refresh={refreshComments}/>
-            </div>
+            <CommentList refresh={refreshComments} />
+          </div>
         </div>
       </div>
     </PostProvider>

@@ -43,3 +43,14 @@
     padding: 20px;
   }
 }
+
+.editButtonContainer {
+  display: flex;
+  justify-content: end;
+  position: relative;
+
+  .editButton {
+    display: grid;
+    place-content: center;
+  }
+}
