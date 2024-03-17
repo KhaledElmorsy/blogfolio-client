@@ -1,8 +1,14 @@
 @use '/src/scss/variables';
+@use '/src/scss/mixins';
 
 .pageContainer {
+  padding: 20px;
+  @include mixins.card;
   width: fit-content;
-  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
 
   .draftToggleContainer {
     font-family: variables.$font-sans-serif;
@@ -13,7 +19,6 @@
     overflow: auto;
     height: fit-content;
     width: 700px;
-    max-height: 80%;
     background-color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }

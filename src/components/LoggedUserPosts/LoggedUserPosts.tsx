@@ -3,11 +3,13 @@ import { PostList, type LightPost } from '../PostList/PostList';
 import { useState, useEffect } from 'react';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { Button } from '../Button/Button';
+import { Link } from 'react-router-dom';
 import style from './LoggedUser.module.scss';
 
 export function LoggedUserPosts() {
   const [posts, setPosts] = useState<LightPost[]>([]);
-  const [showDrafts, setShowDrafts] = useState(true);
+  const [showDrafts, setShowDrafts] = useState(false);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export function LoggedUserPosts() {
   return (
     <div className={style.pageContainer}>
       <div className={style.draftToggleContainer}>
-        <span>Show drafts only?</span>
+        <span>Drafts only: </span>
         <input
           type="checkbox"
           checked={showDrafts}
@@ -41,10 +43,13 @@ export function LoggedUserPosts() {
           <PostList posts={posts} />
         ) : (
           <div className={style.emptyListWarning}>
-            &quot;It looks like nothing&apos;s here&quot;
+            Looks like nothing&apos;s here...
           </div>
         )}
       </div>
+      <Link to="/posts/new">
+        <Button text="Write" />
+      </Link>
     </div>
   );
 }
