@@ -1,16 +1,21 @@
 @use '/src/scss/variables';
+@use '/src/scss/mixins';
 
 .pageContainer {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: 700px;
+  gap: 30px;
   margin-bottom: 20px;
+  background-color: white;
+  padding: 20px;
+  @include mixins.card;
 
   .titleContainer {
     font-family: variables.$font-sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
   }
 
   .draftContainer {
