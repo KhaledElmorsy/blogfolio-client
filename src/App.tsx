@@ -10,13 +10,15 @@ import {
   ProtectedRoute,
   NewPost,
   ShowPost,
-  EditPost
+  EditPost,
+  PortfolioDashboard,
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
 import { EmoteProvider } from './contexts/EmoteContext';
+import { ProjectForm } from './components/ProjectForm/ProjectForm';
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
               <Route element={<ProtectedRoute to="/login" />}>
                 <Route path="posts" element={<LoggedUserPosts />} />
                 <Route path="posts/new" element={<NewPost />} />
+                <Route path="portfolio" element={<PortfolioDashboard />} />
               </Route>
             </Route>
           </Routes>

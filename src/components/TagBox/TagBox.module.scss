@@ -1,0 +1,51 @@
+@use '/src/scss/mixins';
+@use '/src/scss/variables';
+
+.container {
+  @include mixins.card;
+  box-shadow: none;
+  outline: lightgrey 1px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-wrap: wrap;
+  font-family: variables.$font-sans-serif;
+
+  .tags {
+    display: flex;
+
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    min-height: 50px;
+    max-height: 100px;
+    padding: 10px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    .tag {
+      @include mixins.tag;
+      cursor: pointer;
+    }
+  }
+
+  .input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-top: 1px solid lightgray;
+    font-family: variables.$font-sans-serif;
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+}

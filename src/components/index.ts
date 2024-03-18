@@ -14,4 +14,5 @@ export { Spinner } from './Spinner/Spinner';
 export { ProtectedRoute } from './ProtectedRoute/ProtectedRoute';
 export { NewPost } from './NewPost/NewPost';
 export { ShowPost } from './ShowPost/ShowPost';
-export {EditPost} from './EditPost/EditPost';
+export { EditPost } from './EditPost/EditPost';
+export { PortfolioDashboard } from './PortfolioDashboard/PortfolioDashboard';

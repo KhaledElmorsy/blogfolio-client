@@ -3,3 +3,14 @@
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
+
+@mixin tag {
+  padding: 5px;
+  height: 2em;
+  font-size: 0.8rem;
+  background-color: whitesmoke;
+  border-radius: 5px;
+
+  display: grid;
+  place-content: center;
+}

@@ -1,0 +1,28 @@
+@use '/src/scss/mixins';
+@use '/src/scss/variables';
+
+.container {
+  @include mixins.card;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  height: fit-content;
+  font-family: variables.$font-sans-serif;
+
+  .name {
+    font-weight: 400;
+    font-size: 1.2rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .tag {
+      @include mixins.tag;
+    }
+  }
+}

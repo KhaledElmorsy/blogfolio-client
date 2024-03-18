@@ -1,0 +1,22 @@
+@use '/src/scss/mixins';
+@use '/src/scss/variables';
+
+.container {
+  @include mixins.card;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  font-family: variables.$font-sans-serif;
+
+  .descriptionBox {
+    padding: 10px;
+    resize: none;
+    font-size: 18px;
+  }
+
+  .button {
+    font-size: 0.8rem;
+    height: 2.5rem;
+  }
+}
