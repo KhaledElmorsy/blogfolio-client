@@ -65,7 +65,7 @@ export function ProjectForm({
         className={style.button}
         text="Save"
         onClick={() => void updateCreate()}
-        disabled={!!nameErr.length}
+        disabled={!!nameErr.length || !description.length}
       />
     </div>
   );
