@@ -14,6 +14,7 @@
 
     .project {
       position: relative;
+      height: fit-content;
 
       .deleteButton {
         color: variables.$color-danger;
@@ -24,6 +25,14 @@
         top: 3px;
         right: 7px;
         cursor: pointer;
+      }
+
+      .editButton {
+        cursor: pointer;
+        position: absolute;
+        font-size: 0.7rem;
+        bottom: 3px;
+        right: 5px;
       }
     }
   }
