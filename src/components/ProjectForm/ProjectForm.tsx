@@ -19,11 +19,7 @@ interface ProjectFormProps {
   priority: number;
 }
 
-export function ProjectForm({
-  projectID,
-  priority,
-  onSave,
-}: ProjectFormProps) {
+export function ProjectForm({ projectID, priority, onSave }: ProjectFormProps) {
   const [name, setName, nameErr] = useRefinedState(nameSchema, '');
   const [skills, setSkills] = useState<string[]>([]);
   const [description, setDescription] = useState<string>('');
@@ -49,6 +45,9 @@ export function ProjectForm({
       await createProject({ description, name, skills, priority });
     }
     onSave && onSave();
+    setName('');
+    setSkills([]);
+    setDescription('');
   }
 
   return (
