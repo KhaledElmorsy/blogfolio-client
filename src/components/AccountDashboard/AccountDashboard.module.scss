@@ -1,0 +1,41 @@
+@use '/src/scss/mixins';
+@use '/src/scss/variables';
+
+.container {
+  font-family: variables.$font-sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h3 {
+    font-weight: 300;
+  }
+
+  .button {
+    font-size: 0.8rem;
+    height: fit-content;
+  }
+
+  .credentialsContainer {
+    @include mixins.card;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &>* {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+    }
+  }
+
+  .miscContainer {
+    @include mixins.card;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}

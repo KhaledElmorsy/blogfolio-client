@@ -12,7 +12,8 @@ import {
   ShowPost,
   EditPost,
   PortfolioDashboard,
-  UserPortfolio
+  UserPortfolio,
+  AccountDashboard,
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
@@ -42,6 +43,7 @@ function App() {
                 <Route path="posts" element={<LoggedUserPosts />} />
                 <Route path="posts/new" element={<NewPost />} />
                 <Route path="portfolio" element={<PortfolioDashboard />} />
+                <Route path="account" element={<AccountDashboard />} />
               </Route>
             </Route>
           </Routes>
