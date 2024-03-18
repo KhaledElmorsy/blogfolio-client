@@ -16,3 +16,4 @@ export { NewPost } from './NewPost/NewPost';
 export { ShowPost } from './ShowPost/ShowPost';
 export { EditPost } from './EditPost/EditPost';
 export { PortfolioDashboard } from './PortfolioDashboard/PortfolioDashboard';
+export { UserPortfolio } from './UserPortfolio/UserPortfolio';

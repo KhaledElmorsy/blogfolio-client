@@ -12,13 +12,13 @@ import {
   ShowPost,
   EditPost,
   PortfolioDashboard,
+  UserPortfolio
 } from './components/';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
 import { EmoteProvider } from './contexts/EmoteContext';
-import { ProjectForm } from './components/ProjectForm/ProjectForm';
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
               <Route path="signup" element={<Signup />} />
               <Route path="users/:username" element={<UserLayout />}>
                 <Route index element={<Navigate to="posts" />} />
+                <Route path="portfolio" element={<UserPortfolio />} />
                 <Route path="posts" element={<UserPosts />} />
                 <Route path="posts/:slug" element={<ShowPost />} />
                 <Route path="posts/:slug/edit" element={<EditPost />} />
