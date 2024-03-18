@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ZodSchemaWithErrors } from '../../../blogfolio-types/build/util';
+import { z } from 'zod';
 
-export function useRefinedState<T extends ZodSchemaWithErrors>(
+export function useRefinedState<T extends ZodSchemaWithErrors|z.ZodTypeAny>(
   schema: T,
   initialState: T['_type'] | (() => T['_type'])
 ) {
