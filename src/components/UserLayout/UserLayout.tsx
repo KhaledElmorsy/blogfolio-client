@@ -1,24 +1,26 @@
-import { checkUsername } from '@/services/api/users';
+import { searchUsername } from '@/services/api/users';
 import { SuccessCode } from '@blogfolio/types/Response';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Outlet, NavLink } from 'react-router-dom';
 import { Spinner } from '../Spinner/Spinner';
 import style from './UserLayout.module.scss';
+import { Resources } from '@blogfolio/types/User';
 
 export function UserLayout() {
   const { username } = useParams();
   const navigate = useNavigate();
 
+  const [user, setUser] = useState<Resources['QueriedUser']>();
   const [loading, setLoading] = useState(true);
-  const [userExists, setUserExists] = useState(true);
 
   useEffect(() => {
     async function checkUser() {
-      const response = await checkUsername(username!);
+      const response = await searchUsername(username!);
       if (response.status !== SuccessCode.Ok) {
         throw 'Something went wrong';
       }
-      setUserExists(response.body.result);
+      const userData = response.body.users.find((u) => u.username === username);
+      setUser(userData);
       setLoading(false);
     }
     checkUser().catch(() => navigate('/error'));
@@ -30,13 +32,15 @@ export function UserLayout() {
 
   return loading ? (
     <Spinner size={100} />
-  ) : !userExists ? (
+  ) : !user ? (
     <div className={style.doesntExistMessage}>
       @{username} doesn&apos;t seem to exist!
     </div>
   ) : (
     <div className={style.page}>
       <div className={style.miniBlock}>
+        <p className={style.username}>@{username}</p>
+        {!user.bio? null : <p className={style.bio}>{user.bio}</p>}
         <div className={style.tabs}>
           <NavLink to="posts" className={activeTabStyle}>
             Posts
@@ -45,7 +49,6 @@ export function UserLayout() {
             Portfolio
           </NavLink>
         </div>
-        <p className={style.username}>@{username}</p>
       </div>
       <Outlet />
     </div>
