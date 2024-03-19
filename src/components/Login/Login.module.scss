@@ -8,14 +8,14 @@
   align-items: center;
   gap: 30px;
 
-  width: 500px;
+  width: min(500px, 60%);
   height: 400px;
-  padding: 40px;
+  padding: 30px;
 
   @include mixins.card;
 
   .title {
-    font-size: 40px;
+    font-size: 36px;
     font-family: variables.$font-sans-serif;
     color: variables.$color-main-dark;
   }
