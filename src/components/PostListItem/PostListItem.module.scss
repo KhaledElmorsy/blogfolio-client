@@ -1,4 +1,5 @@
 @use '/src/scss/variables';
+@use '/src/scss/media';
 
 .itemContainer {
   font-family: variables.$font-sans-serif;
@@ -17,7 +18,7 @@
     justify-content: space-evenly;
     flex-shrink: 0;
     gap: 10px;
-    width: 100px
+    width: min(25%, 100px);
   }
 
   .postData {
@@ -30,8 +31,12 @@
 
     .miscContainer {
       display: flex;
-      align-items: center;
-      gap: 30px;
+      align-items: end;
+      gap: 15px;
+      @include media.xs {
+        flex-direction: column;
+        align-items: start;
+      }
     }
   }
 }
@@ -44,16 +49,21 @@
 .summary {}
 
 .username {
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 .userPFP {
   border-radius: 50%;
   width: 50px;
+
+  @include media.xs {
+    width: 25px;
+  }
+
 }
 
 .date {
-  font-size: 0.95em;
+  font-size: 0.95rem;
 }
 
 .emotes {}

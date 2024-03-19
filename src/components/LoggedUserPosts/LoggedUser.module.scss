@@ -4,7 +4,7 @@
 .pageContainer {
   padding: 20px;
   @include mixins.card;
-  width: fit-content;
+  width: min(90%, 800px);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -18,7 +18,7 @@
   .listContainer {
     overflow: auto;
     height: fit-content;
-    width: 700px;
+    max-height: 800px;
     background-color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
