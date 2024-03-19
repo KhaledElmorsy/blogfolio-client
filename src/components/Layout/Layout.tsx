@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import style from './Layout.module.scss';
+import './Layout.scss';
 import { useUserContext } from '@/contexts/UserContext';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
@@ -39,8 +40,8 @@ export function Layout() {
             <span className={style.userActions}>
               {!user ? (
                 <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/signup">Signup</Link>
+                  <NavLink to="/login">Login</NavLink>
+                  <NavLink to="/signup">Signup</NavLink>
                 </>
               ) : (
                 <>
