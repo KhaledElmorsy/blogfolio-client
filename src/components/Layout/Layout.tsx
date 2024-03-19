@@ -1,9 +1,23 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import style from './Layout.module.scss';
 import { useUserContext } from '@/contexts/UserContext';
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
 
 export function Layout() {
   const { user } = useUserContext();
+
+  const [showNavbar, setShowNavbar] = useState(true);
+  const isMobile = useMediaQuery('(max-width: 600px)');
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isMobile) setShowNavbar(false);
+  }, [location]);
+
+  useEffect(() => {
+    setShowNavbar(!isMobile);
+  }, [isMobile]);
 
   return (
     <div className={style.pageContainer}>
@@ -11,27 +25,32 @@ export function Layout() {
         <Link to="/" className={style.logo}>
           Blogfolio
         </Link>
-        <div className={style.navBar}>
-          <span className={style.links}>
-            <Link to="/">Home</Link>
-            <Link to="/portfolio">Portfolio</Link>
-            <Link to="/posts">Posts</Link>
-            <Link to="/account">Account</Link>
-          </span>
-          <span className={style.userActions}>
-            {!user ? (
-              <>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Signup</Link>
-              </>
-            ) : (
-              <>
-                <img src={user.photoSmall ?? ''} className={style.userPic} />
-                <Link to="/logout">Logout</Link>
-              </>
-            )}
-          </span>
+        <div className={style.burger} onClick={() => setShowNavbar((p) => !p)}>
+          ≡
         </div>
+        {!showNavbar ? null : (
+          <div className={style.navBar}>
+            <span className={style.links}>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/portfolio">Portfolio</NavLink>
+              <NavLink to="/posts">Posts</NavLink>
+              <NavLink to="/account">Account</NavLink>
+            </span>
+            <span className={style.userActions}>
+              {!user ? (
+                <>
+                  <Link to="/login">Login</Link>
+                  <Link to="/signup">Signup</Link>
+                </>
+              ) : (
+                <>
+                  <img src={user.photoSmall ?? ''} className={style.userPic} />
+                  <Link to="/logout">Logout</Link>
+                </>
+              )}
+            </span>
+          </div>
+        )}
       </div>
       <Outlet />
     </div>
