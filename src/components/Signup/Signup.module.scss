@@ -1,5 +1,6 @@
 @use '/src/scss/variables.scss';
 @use '/src/scss/mixins';
+@use '/src/scss/media';
 
 .signupContainer {
   width: 60%;
@@ -14,6 +15,20 @@
     "username   email"
     "password   bio"
     "firstName  lastName";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @include media.xs {
+    grid-template-areas: "title"
+      "username"
+      "email"
+      "password"
+      "bio"
+      "firstName"
+      "lastName";
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
 }
 
 .title {
