@@ -4,7 +4,7 @@
 .pageContainer {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: min(90%, 700px);
   gap: 30px;
   margin-bottom: 20px;
   background-color: white;
