@@ -1,0 +1,15 @@
+@use '/src/scss/mixins';
+
+.container {
+  @include mixins.card;
+  width: min(90%, 800px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+  .listContainer {
+    max-height: 800px;
+    overflow-y: auto;
+  }
+}

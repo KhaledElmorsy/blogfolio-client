@@ -33,6 +33,7 @@
       display: flex;
       align-items: end;
       gap: 15px;
+
       @include media.xs {
         flex-direction: column;
         align-items: start;
@@ -42,11 +43,14 @@
 }
 
 .title {
-  font-size: 22px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
   font-weight: 500;
 }
 
-.summary {}
+.summary {
+  font-size: clamp(0.8rem, 2vw, 1.5rem);
+
+}
 
 .username {
   font-size: 0.8rem;

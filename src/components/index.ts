@@ -18,3 +18,4 @@ export { EditPost } from './EditPost/EditPost';
 export { PortfolioDashboard } from './PortfolioDashboard/PortfolioDashboard';
 export { UserPortfolio } from './UserPortfolio/UserPortfolio';
 export { AccountDashboard } from './AccountDashboard/AccountDashboard';
+export { ExplorePosts } from './ExplorePosts/ExplorePosts';

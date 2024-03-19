@@ -33,6 +33,7 @@ export function Layout() {
           <div className={style.navBar}>
             <span className={style.links}>
               <NavLink to="/">Home</NavLink>
+              <NavLink to="/explore">Explore</NavLink>
               <NavLink to="/portfolio">Portfolio</NavLink>
               <NavLink to="/posts">Posts</NavLink>
               <NavLink to="/account">Account</NavLink>
