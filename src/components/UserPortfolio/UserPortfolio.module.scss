@@ -1,7 +1,16 @@
+@use '/src/scss/media';
+
 .container {
   column-count: 2;
   column-gap: 20px;
   margin-bottom: 20px;
+
+  width: min(90%, 700px);
+
+  @include media.xs {
+    display: flex;
+    flex-direction: column;
+  }
 
   &>* {
     break-inside: avoid;
