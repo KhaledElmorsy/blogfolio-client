@@ -1,8 +1,9 @@
 @use '/src/scss/mixins';
 @use '/src/scss/variables';
+@use '/src/scss/media';
 
 .pageContainer {
-  width: 700px;
+  width: min(90%, 700px);
   position: relative;
   font-family: variables.$font-sans-serif;
   display: flex;
@@ -60,6 +61,11 @@
   justify-content: end;
   position: absolute;
   right: 20px;
+
+  @include media.xs {
+    right: 10px;
+    top: 10px;
+  }
 
   .editButton {
     display: grid;
