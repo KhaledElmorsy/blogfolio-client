@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { ZodSchemaWithErrors } from '../../../blogfolio-types/build/util';
 import { z } from 'zod';
 
-export function useRefinedState<T extends ZodSchemaWithErrors|z.ZodTypeAny>(
+export function useRefinedState<T extends z.ZodTypeAny>(
   schema: T,
-  initialState: T['_type'] | (() => T['_type'])
+  initialState: z.infer<T> | (() => z.infer<T>)
 ) {
-  const [state, setState] = useState<T['_type']>(initialState);
+  const [state, setState] = useState<z.infer<T>>(initialState);
   const [errors, setErrors] = useState<string[]>([]);
 
   useEffect(() => {
