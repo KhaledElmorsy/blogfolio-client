@@ -220,10 +220,10 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@blogfolio/types@^0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@blogfolio/types/-/types-0.0.30.tgz#2b83d4955f04d8edbe275d4cc5463a1dd6934490"
-  integrity sha512-KwtEADPuHdtBIug86w5VDCerBTfAb3J/buBk+kOhHWvcIjLgfKlZ7YgXnoJdtEJLnZEmu35o4+JhK/m9tyrBhQ==
+"@blogfolio/types@^0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@blogfolio/types/-/types-0.0.32.tgz#f0864043d73e8e11324cbcf63cc9ef585b8ec95f"
+  integrity sha512-1Q9xrgNeuKfi8bMgPY0Moc3VTLcxbgYP3tCQ1Lw+etlMnMV3DqYmpADBxhYPYN31JtK44R8c+fdjAUGxk+sAzQ==
 
 "@esbuild/aix-ppc64@0.19.12":
   version "0.19.12"
