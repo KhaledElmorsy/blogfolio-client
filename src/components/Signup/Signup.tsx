@@ -110,7 +110,6 @@ export function Signup() {
             })
             .catch(console.error);
         } else {
-          console.log(res.body.errors);
           res.body.errors.forEach((error) => {
             toast.error(error.message, {
               position: 'bottom-center',

@@ -13,7 +13,6 @@ export function ExplorePosts() {
   useEffect(() => {
     searchPosts(search)
       .then((res) => {
-        console.log(res);
         if (res.status === SuccessCode.Ok) {
           setPosts(res.body.posts);
         } else {
