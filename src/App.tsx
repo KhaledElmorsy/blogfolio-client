@@ -20,6 +20,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
+import './scss/fonts.css';
 import { EmoteProvider } from './contexts/EmoteContext';
 
 function App() {
