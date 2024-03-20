@@ -8,6 +8,7 @@ import {
 import { useUserContext } from '@/contexts/UserContext';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import style from './Login.module.scss';
+import { FormEvent } from 'react';
 
 export function Login() {
   const { user } = useUserContext();
@@ -22,7 +23,11 @@ export function Login() {
     ''
   );
 
-  function performLogin() {
+  const cantSubmit = !!passwordErrs.length || !!usernameErrs.length;
+
+  function performLogin(e: FormEvent) {
+    e.preventDefault();
+    if(cantSubmit) return;
     login(username, password)
       .then(() => {
         navigate('/');
@@ -46,7 +51,7 @@ export function Login() {
     <Navigate to="/" />
   ) : (
     <>
-      <div className={style.loginContainer}>
+      <form className={style.loginContainer} onSubmit={performLogin}>
         <span className={style.title}>Login</span>
         <div className={style.inputContainer}>
           <div className={style.label}>Username</div>
@@ -66,11 +71,10 @@ export function Login() {
           />
         </div>
         <Button
-          disabled={!!passwordErrs.length || !!usernameErrs.length}
+          disabled={cantSubmit}
           text="Login"
-          onClick={performLogin}
         />
-      </div>
+      </form>
       <ToastContainer limit={1} />
     </>
   );
