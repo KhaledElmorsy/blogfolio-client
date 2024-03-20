@@ -58,7 +58,14 @@ export function ProjectForm({ projectID, priority, onSave }: ProjectFormProps) {
         onChange={(e) => setName(e.target.value)}
         errors={nameErr}
       />
-      <MDEditor value={description} onChange={setDescription} />
+      <MDEditor
+        value={description}
+        onChange={
+          setDescription as React.Dispatch<
+            React.SetStateAction<string | undefined>
+          >
+        }
+      />
       <TagBox tags={skills} setTags={setSkills} />
       <Button
         className={style.button}

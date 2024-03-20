@@ -84,7 +84,9 @@ export function NewPost() {
       <br />
       <MDEditor
         value={body}
-        onChange={setBody}
+        onChange={
+          setBody as React.Dispatch<React.SetStateAction<string | undefined>>
+        }
         preview="edit"
         previewOptions={{
           rehypePlugins: [[rehypeSanitize]],
