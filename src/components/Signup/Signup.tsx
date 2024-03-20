@@ -71,6 +71,7 @@ export function Signup() {
   }
 
   useEffect(() => {
+    if (usernameErr.length) return;
     checkUsername(username)
       .then((res) => {
         if (res.status === SuccessCode.Ok) {
@@ -78,9 +79,10 @@ export function Signup() {
         }
       })
       .catch(console.error);
-  }, [username]);
+  }, [username, usernameErr.length]);
 
   useEffect(() => {
+    if (emailErr.length) return;
     checkEmail(email)
       .then((res) => {
         if (res.status === SuccessCode.Ok) {
@@ -88,7 +90,7 @@ export function Signup() {
         }
       })
       .catch(console.error);
-  }, [email]);
+  }, [email, emailErr.length]);
 
   const navigate = useNavigate();
   const { login } = useAuth();
