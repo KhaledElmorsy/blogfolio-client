@@ -1,4 +1,4 @@
-import { getPostBySlug, updatePost } from '@/services/api/posts';
+import { getPostBySlug, updatePost, deletePost } from '@/services/api/posts';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { RefinedInput } from '../RefinedInput/RefinedInput';
 import { Button } from '../Button/Button';
@@ -69,9 +69,18 @@ export function EditPost() {
   function updatePostData() {
     updatePost(postID, { body, slug, summary, title, visible: !draft })
       .then((res) => {
-        console.log(res);
         if (res.status === SuccessCode.Ok) {
           navigate('..');
+        }
+      })
+      .catch(console.error);
+  }
+
+  function deletePostHandler() {
+    deletePost(postID)
+      .then((res) => {
+        if (res.status === SuccessCode.Ok) {
+          navigate('/posts');
         }
       })
       .catch(console.error);
@@ -139,6 +148,7 @@ export function EditPost() {
             slugTaken
           }
         />
+        <Button text="Delete" onClick={deletePostHandler} danger/>
       </div>
     </div>
   );
