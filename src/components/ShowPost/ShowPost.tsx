@@ -19,6 +19,7 @@ import { useUserContext } from '@/contexts/UserContext';
 import { PostProvider } from '@/contexts/PostContext';
 import { CommentForm } from '../CommentForm/CommentForm';
 import { CommentList } from '../CommentList/CommentList';
+import { CommentRefreshProvider } from '@/contexts/CommentRefreshContext';
 import { SuccessCode } from '@blogfolio/types/Response';
 
 import style from './ShowPost.module.scss';
@@ -29,7 +30,6 @@ export function ShowPost() {
   const [post, setPost] = useState<Post>();
   const [emoteCounts, setEmoteCounts] = useState<EmoteCountType[]>([]);
   const [userEmote, setUserEmote] = useState<number | null>(null);
-  const [refreshComments, setRefreshComments] = useState(false);
   const [loading, setLoading] = useState(true);
 
   async function pickEmote(emoteID: number) {
@@ -89,7 +89,9 @@ export function ShowPost() {
         ) : null}
         <div className={style.titleContainer}>
           <h2 className={style.title}>{post?.title}</h2>
-          {post?.summary ? <p className={style.summary}>{post.summary}</p> : null}
+          {post?.summary ? (
+            <p className={style.summary}>{post.summary}</p>
+          ) : null}
           {user ? (
             <EmotePicker
               emoteCounts={emoteCounts}
@@ -102,11 +104,13 @@ export function ShowPost() {
         </div>
         <MDEditor.Markdown source={post?.body} className={style.postBody} />
         <div className={style.comments}>
-          <p className={style.title}>Comments</p>
-          <CommentForm refresh={setRefreshComments} />
-          <div className={style.commentListContainer}>
-            <CommentList refresh={refreshComments} />
-          </div>
+          <CommentRefreshProvider>
+            <p className={style.title}>Comments</p>
+            <CommentForm />
+            <div className={style.commentListContainer}>
+              <CommentList />
+            </div>
+          </CommentRefreshProvider>
         </div>
       </div>
     </PostProvider>

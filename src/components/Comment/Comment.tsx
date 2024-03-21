@@ -10,12 +10,14 @@ import {
   getCommentUserEmotes,
   updateCommentEmote,
 } from '@/services/api/emotes';
+import { deleteComment } from '@/services/api/comments';
 import { useEffect, useState } from 'react';
 import { type Resources } from '@blogfolio/types/User';
 import { SuccessCode } from '@blogfolio/types/Response';
 import style from './Comment.module.scss';
 import { EmotePicker } from '../EmotePicker/EmotePicker';
 import { Link } from 'react-router-dom';
+import { useCommentRefresh } from '@/contexts/CommentRefreshContext';
 
 type Comment = z.infer<(typeof CommentTypes)['comment']>;
 type User = Resources['QueriedUser'];
@@ -35,6 +37,7 @@ export function Comment({
   const [author, setAuthor] = useState<User | null>();
   const [emoteCounts, setEmoteCounts] = useState(initEmoteCounts);
   const [pickedEmote, setPickedEmote] = useState<number | null>(null);
+  const { refresh } = useCommentRefresh();
 
   const cDate = new Date(createdAt);
 
@@ -81,12 +84,29 @@ export function Comment({
       .catch(console.error);
   }, [userID]);
 
+  function handleDeleteComment() {
+    deleteComment(id)
+      .then((res) => {
+        if (res.status === SuccessCode.Ok) {
+          refresh();
+        }
+      })
+      .catch(console.error);
+  }
+
   return (
     <div className={style.container}>
-      <p className={style.author}>
-        {<Link to={`/users/${author?.username}`}>{author?.username}</Link> ??
-          'Deleted'}
-      </p>
+      <div className={style.header}>
+        <p className={style.author}>
+          {<Link to={`/users/${author?.username}`}>{author?.username}</Link> ??
+            'Deleted'}
+        </p>
+        {author?.id !== user?.id ? null : (
+          <span className={style.deleteButton} onClick={handleDeleteComment}>
+            x
+          </span>
+        )}
+      </div>
       <p className={style.body}>{body}</p>
       <div className={style.footer}>
         {user ? (

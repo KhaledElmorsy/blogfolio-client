@@ -8,19 +8,18 @@ import { getCommentEmoteCounts } from '@/services/api/emotes';
 import { type EmoteCount } from '../PostList/PostList';
 import { Spinner } from '../Spinner/Spinner';
 import { Comment } from '../Comment/Comment';
+import { useCommentRefresh } from '@/contexts/CommentRefreshContext';
 
 type CommentType = z.infer<(typeof CommentTypes)['comment']>;
 
-interface CommentListProps {
-  refresh?: boolean;
-}
-
-export function CommentList({refresh}: CommentListProps) {
+export function CommentList() {
   const { postID } = usePostContext();
   const [comments, setComments] = useState<CommentType[]>([]);
   const [emoteCounts, setEmoteCounts] = useState<Record<string, EmoteCount[]>>(
     {}
   );
+
+  const { watchRefresh } = useCommentRefresh();
 
   useEffect(() => {
     getComments({ postID })
@@ -30,7 +29,7 @@ export function CommentList({refresh}: CommentListProps) {
         }
       })
       .catch(console.error);
-  }, [postID, refresh]);
+  }, [postID, watchRefresh]);
 
   useEffect(() => {
     getCommentEmoteCounts(comments.map(({ id }) => id))
