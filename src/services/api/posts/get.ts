@@ -30,7 +30,7 @@ interface PostListOptions {
 export function searchPosts(searchText: string, options: PostListOptions = {}) {
   return axiosWithEndpoint<ControllerSchema['GetSearch']>(
     'get',
-    `/api/posts/`,
+    `/api/posts`,
     {},
     { params: { search: searchText, ...options } }
   );

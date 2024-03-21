@@ -8,7 +8,7 @@ type ControllerSchema = typeof endPoints;
 export function signUp(details: UserEndpoints['Post']['request']['body']) {
   return axiosWithEndpoint<ControllerSchema['Post']>(
     'post',
-    '/api/users/',
+    '/api/users',
     details
   );
 }

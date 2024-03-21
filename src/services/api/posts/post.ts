@@ -9,7 +9,7 @@ type PostDetails = InferEndpoint<ControllerSchema['Post']>['request']['body'];
 export function createPost(details: PostDetails) {
   return axiosWithEndpoint<ControllerSchema['Post']>(
     'post',
-    '/api/posts/',
+    '/api/posts',
     details
   );
 }

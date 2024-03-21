@@ -8,7 +8,7 @@ type ControllerSchema = typeof endPoints;
 type MiscUserData = UserEndpoints['Put']['request']['body'];
 
 export function updateUserData(data: MiscUserData) {
-  return axiosWithEndpoint<ControllerSchema['Put']>('put', '/api/users/', data);
+  return axiosWithEndpoint<ControllerSchema['Put']>('put', '/api/users', data);
 }
 
 export function changePassword(password: string) {
