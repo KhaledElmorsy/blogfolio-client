@@ -43,13 +43,12 @@
 }
 
 .title {
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 500;
 }
 
 .summary {
-  font-size: clamp(0.8rem, 2vw, 1.5rem);
-
+  font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .username {
