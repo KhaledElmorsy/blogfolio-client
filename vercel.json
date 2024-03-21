@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!api/.*).*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://blogfolio-server-production.up.railway.app/v1/:path*"
+    }
+  ]
+}
